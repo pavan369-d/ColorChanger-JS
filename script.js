@@ -1,21 +1,15 @@
-let buttons = document.querySelectorAll(".colors");
-let con = document.getElementById("container");
-buttons.forEach(function (colors) {
-  console.log(colors);
-  colors.addEventListener("click", function (e) {
-    console.log(e);
-    console.log(e.target);
-    if (e.target.id === "grey") {
-      con.style.backgroundColor = e.target.id;
-    }
-    if (e.target.id === "white") {
-      con.style.backgroundColor = e.target.id;
-    }
-    if (e.target.id === "blue") {
-      con.style.backgroundColor = e.target.id;
-    }
-    if (e.target.id === "yellow") {
-      con.style.backgroundColor = e.target.id;
-    }
+let box = document.getElementById("container").children;
+let btn = document.querySelector("button");
+btn.addEventListener("click", function () {
+  Array.from(box).forEach((e) => {
+    e.style.backgroundColor = randomColorGenerator();
+    e.style.color = randomColorGenerator();
   });
 });
+
+function randomColorGenerator() {
+  let val1 = Math.ceil(0 + Math.random() * 255);
+  let val2 = Math.ceil(0 + Math.random() * 255);
+  let val3 = Math.ceil(0 + Math.random() * 255);
+  return `rgb(${val1},${val2},${val3})`;
+}
